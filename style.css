@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+button { 
+    background-color: none;
+    border: none;
+}
+ul { 
+ list-style: none;
+}
+h1, h2, h3, p {
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    color: #1D1D1D;
+}
+.tab-link {
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    color: #FFFFFF;
+}
+
+html, body { 
+    height: 100%;
+    min-width: 320px;
+}
+
+body { 
+    font-family: 'Jost', sans-serif;  
+    font-style: normal;
+    color: #1D1D1D;
+    position: relative;
+    overflow-x: hidden;
+    background: #FBE0DC;
+}
+.back { 
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    width: auto;
+    z-index: -1;
+}
+.flex { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.header {
+    text-align: center;
+    padding: 24px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 400;
+    color: #FF868E;
+    border-radius: 20px;
+    background: #fff;
+    padding: 10px 30px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tab-bar { 
+    margin-bottom: 15px;
+}
+.tab-link { 
+    padding: 10px ;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #FF868E;
+    border-radius: 10px;
+}
+
+.tab-link:hover, 
+.tab-link:active {
+   background: #FF868E;
+   color: #fff;
+}
+
+.content {
+    background: #fff;
+    border-radius: 20px;
+    padding:  20px;
+
+}
+.main { 
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    gap: 20px;
+}
+.main-title {
+
+}
+
+.main-form {
+    background: #F8F8F7;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+ label { 
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    color: #8C8C8C;
+    text-transform: uppercase;
+    padding-left: 10px;
+}
+
+input,
+select  { 
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 8px 10px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1D1D1D; 
+    margin-bottom: 10px;
+}
+
+input:focus { 
+    border-color: #FF868E;
+}
+
+button { 
+    background: #FBE0DC;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #FF868E;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+button:hover {
+    background: #FF868E;
+    color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.result-block {
+    border: 2px solid #FBE0DC;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.result-block h2 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    color: #1D1D1D;
+    display: inline-block;
+    background-color: #FFFFFF;
+    position: absolute;
+    padding: 0 15px;
+    top: -16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.start {
+}
+.end {
+}
+.result-block p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.result-block p span {
+   color:  #8C8C8C;
+   font-weight: 400;
+}
+
+
+.history { 
+    display: none;
+}
+.history h2 { 
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.history-list { 
+    display: grid;
+    gap: 20px 30px ;
+    grid-template-columns: 1fr 1fr;
+}
+.history-item  {
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.open { 
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Iphone 5 */
+@media (max-width: 320px) {
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+}
+@media (max-width: 768px) { 
+    .back { 
+        display: none;
+    }
+
+    .history-list { 
+        gap: 0;
+        grid-template-columns: 1fr ;
+    }
+}
+/* Landscape phones and portrait tablets */
+@media (min-width: 768px) {
+    .main {
+        grid-template-columns: 3fr 2fr;
+        align-items: flex-start;
+    }
+    .result-block {
+        margin-top: 0px;
+    }
+    .main-form {
+        margin-top: 0px;
+    }
+}
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
