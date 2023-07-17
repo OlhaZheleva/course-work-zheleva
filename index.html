@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Time measure</title>
+</head>
+<body>
+    <img class="back" src="./img/girl-and-pet.png" alt="">
+    <header class="header">
+        <p class="logo">Time Measure</p>
+    </header>
+    <div class="container">
+        <div class="tab-bar flex">
+            <button class="tab-link" id="main">Вирахувати</button>
+            <button  class="tab-link" id="history">Попередні</button>
+        </div>
+        <div class="content">
+            <div class="main" >
+                <div class="main-form">
+                    <div class="date">
+                        <label for="start">Початкова дата</label><br>
+                        <input type="date" id="start" required value="">
+                        <br>
+                        <label for="period">Задати проміжок часу</label><br>
+                        <select id="period">
+                            <option value="other">інший</option>
+                            <option value="week">Тиждень</option>
+                            <option value="month">Місяць</option>
+                        </select>
+                        <br>
+                        <label for="end">Кінцева дата</label><br>
+                        <input type="date" id="end" value="" disabled>
+                    </div>
+                    <div class="">
+                        <label for="end">Обрати дні</label><br>
+                        <select id="days-type">
+                            <option value="all">усі дні</option>
+                            <option value="weekdays">тільки будні</option>
+                            <option value="weekend">тільки вихідні</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="end">Показати результат у:</label><br>
+                        <select id="dimension">
+                            <option value="days" >днях</option>
+                            <option value="hours">годинах</option>
+                            <option value="minutes">хвилинах</option>
+                            <option value="seconds">секундах</option>
+                        </select>
+                    </div>
+                    <button id="count">порахувати</button>
+                </div>
+                <div class="result-block">
+                    <h2>Результат</h2>
+                    <p class="start"> </p>
+                    <p class="end">  </p>
+                    <p class="result"> </p>
+                </div>
+            </div>
+            <div class="history " >
+                <h2>Попередні розрахунки</h2>
+                <div class="history-list">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./tabmenu.js"></script>
+    <script src="./script.js"></script>
+    <script src="./test.js"></script>
+</body>
+</html>
