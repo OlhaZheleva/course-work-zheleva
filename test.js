@@ -8,37 +8,36 @@
 
 let startDate = new Date(startInput.value);
 let endDate = new Date(endInput.value);
-let numOfDates = getBusinessDatesCount(startDate,endDate);
 
+function countWeekDaysBetween (startDate, endDate) { 
+    Array
+    .from({ length: (endDate - startDate) / (1000 * 3600 * 24) })
+    .reduce(number => {
+      if (startDate.getDay() % 6 !== 0) number++;
+      startDate = new Date(startDate.setDate(startDate.getDate() + 1));
+      return number;
+    }, 0);
+};
 
-function getBusinessDatesCount(startDate, endDate) {
+console.log(countWeekDaysBetween(startDate, endDate));
 
-    const typeDays = daysTypeInput.options[daysTypeInput.selectedIndex].value;
-    let count = 0;
-    const curDate = new Date(startDate);
+/**
+ * Обчислення враховуючи тільки будні дні 
+ *
+ */
 
-    if (typeDays === "weekdays") {
+function durationWithOnlyWeekday(daysDyWeek) {
 
-        while (curDate <= endDate) {
-            const dayOfWeek = curDate.getDay();
-            if(dayOfWeek !== 0 && dayOfWeek !== 6) count++;
-            curDate.setDate(curDate.getDate() + 1);
-        }
-        alert(count);
-        return count;
-    } else  if (typeDays === "weekend") {
-
-        while (curDate <= endDate) {
-            const dayOfWeek = curDate.getDay();
-            if(dayOfWeek !== 0 && dayOfWeek !== 6) count++;
-            curDate.setDate(curDate.getDate() + 1);
-        }
-        alert(count);
-        return count;
-    } else { 
-        
+    daysDyWeek = daysTypeInput.options[daysTypeInput.selectedIndex].value;
+  
+    switch (daysDyWeek) {
+      case "weekdays":
+        countWeekDaysBetween();
+        console.log(countWeekDaysBetween());
+        break;
+      case "weekend":
+        end = new Date(start.setMonth(start.getMonth() + 1));
+        break;
     }
+  }
 
-}
-
-// count.addEventListener("click", getBusinessDatesCount);

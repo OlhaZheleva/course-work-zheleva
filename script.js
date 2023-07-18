@@ -65,32 +65,6 @@ function setResultsToLocalStorage(results) {
 }
 
 
-/**
- * Функція різниці дат
- */
-
-function durationBetweenDates(start, end) {
-  start = startInput.value;
-  end = endInput.value;
-
-  // зразу фіксуємо вихідні дані у DOM
-  startInner.innerHTML = `Початкова дата: ${start}  </p>`;
-  endInner.innerHTML = `Кінцева дата: ${end}  </p>`;
-
-  // формула обчислення різниці дат
-  difference = Math.abs(Date.parse(end) - Date.parse(start));
-
-  // функція обчислення враховуючи одиниці виміру
-  const dimension = dimensionInput.options[dimensionInput.selectedIndex].value;
-  durationWithDimension(dimension);
-
-  // записуюмо результат обчислення у обʼєкст
-  let result = new Results(start, end, difference);
-
-  // Додаємо новий результат в localStorage
-  storeResultsInLocalStorage(result);
-}
-
 
 /**
  * Функція збереження у local storage
@@ -163,6 +137,35 @@ function createResultsElement(result) {
 
   return div;
 }
+
+
+/**
+ * Функція різниці дат
+ */
+
+function durationBetweenDates(start, end) {
+  start = startInput.value;
+  end = endInput.value;
+
+  // зразу фіксуємо вихідні дані у DOM
+  startInner.innerHTML = `Початкова дата: ${start}  </p>`;
+  endInner.innerHTML = `Кінцева дата: ${end}  </p>`;
+
+  // формула обчислення різниці дат
+  difference = Math.abs(Date.parse(end) - Date.parse(start));
+
+  // функція обчислення враховуючи одиниці виміру
+  const dimension = dimensionInput.options[dimensionInput.selectedIndex].value;
+  durationWithDimension(dimension);
+
+  // записуюмо результат обчислення у обʼєкст
+  let result = new Results(start, end, difference);
+
+  // Додаємо новий результат в localStorage
+  storeResultsInLocalStorage(result);
+}
+
+
 
 /**
  * Обчислення враховуючи одиниці віміру

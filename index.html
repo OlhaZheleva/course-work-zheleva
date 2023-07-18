@@ -22,7 +22,7 @@
                 <div class="main-form">
                     <div class="date">
                         <label for="start">Початкова дата</label><br>
-                        <input type="date" id="start" required value="">
+                        <input id="start" required value="" placeholder="Вказати дату" type="text" onfocus="(this.type = 'date')">
                         <br>
                         <label for="period">Задати проміжок часу</label><br>
                         <select id="period">
@@ -32,7 +32,7 @@
                         </select>
                         <br>
                         <label for="end">Кінцева дата</label><br>
-                        <input type="date" id="end" value="" disabled>
+                        <input  id="end" value="" disabled placeholder="Вказати дату" type="text" onfocus="(this.type = 'date')">
                     </div>
                     <div class="">
                         <label for="end">Обрати дні</label><br>
