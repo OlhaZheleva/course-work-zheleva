@@ -31,7 +31,6 @@ historyBtn.addEventListener("click", renderHistoryResults);
  * При завантаженні сторінки зразу підтягується аутальна інформація з localStorage
  */
 
-
 /**
  * Поле з кінцевою датою неактивне, поки не заповнене поле з початковою датою
  */
@@ -63,34 +62,6 @@ class Results {
 function setResultsToLocalStorage(results) {
   localStorage.setItem("results", JSON.stringify(results));
 }
-
-
-/**
- * Функція різниці дат
- */
-
-function durationBetweenDates(start, end) {
-  start = startInput.value;
-  end = endInput.value;
-
-  // зразу фіксуємо вихідні дані у DOM
-  startInner.innerHTML = `Початкова дата: ${start}  </p>`;
-  endInner.innerHTML = `Кінцева дата: ${end}  </p>`;
-
-  // формула обчислення різниці дат
-  difference = Math.abs(Date.parse(end) - Date.parse(start));
-
-  // функція обчислення враховуючи одиниці виміру
-  const dimension = dimensionInput.options[dimensionInput.selectedIndex].value;
-  durationWithDimension(dimension);
-
-  // записуюмо результат обчислення у обʼєкст
-  let result = new Results(start, end, difference);
-
-  // Додаємо новий результат в localStorage
-  storeResultsInLocalStorage(result);
-}
-
 
 /**
  * Функція збереження у local storage
@@ -125,7 +96,7 @@ function storeResultsInLocalStorage(result) {
     // Записуємо оновлений масив в localStorage
     setResultsToLocalStorage(results);
   } else {
-    results.pop()
+    results.pop();
     results.unshift(result);
     // Записуємо оновлений масив в localStorage
     setResultsToLocalStorage(results);
@@ -165,6 +136,37 @@ function createResultsElement(result) {
 }
 
 /**
+ * Функція різниці дат
+ */
+
+function durationBetweenDates(start, end) {
+  start = startInput.value;
+  end = endInput.value;
+
+  if (start > end) {
+    alert("Кінцева дата має бути пізніше за початкову.");
+  } else {
+    // зразу фіксуємо вихідні дані у DOM
+    startInner.innerHTML = `Початкова дата: ${start}  </p>`;
+    endInner.innerHTML = `Кінцева дата: ${end}  </p>`;
+
+    // формула обчислення різниці дат
+    difference = Math.abs(Date.parse(end) - Date.parse(start));
+
+    // функція обчислення враховуючи одиниці виміру
+    const dimension =
+      dimensionInput.options[dimensionInput.selectedIndex].value;
+    durationWithDimension(dimension);
+
+    // записуюмо результат обчислення у обʼєкст
+    let result = new Results(start, end, difference);
+
+    // Додаємо новий результат в localStorage
+    storeResultsInLocalStorage(result);
+  }
+}
+
+/**
  * Обчислення враховуючи одиниці віміру
  *
  */
@@ -197,22 +199,49 @@ function durationWithDimension(dimension) {
  */
 
 function addPeriod() {
-  let start = new Date(startInput.value);
+  let start ;
   let period = periodInput.options[periodInput.selectedIndex].value;
   let end;
 
   switch (period) {
     case "week":
-      end = new Date(start.setDate(start.getDate() + 7));
-      break;
-    case "month":
-      end = new Date(start.setMonth(start.getMonth() + 1));
-      break;
-  }
 
-  end = formatDate(end);
-  endInput.value = end;
-  // endInput.value = end.toDateString;
+      // перевіряємо чи заповнене поле стартової дати 
+
+      if (!startInput.value) { // якщо поле пусте, стартова = сьогодні 
+        start = new Date();
+        startInput.value = formatDate(start);
+      } else { // якщо поле заповнене 
+        start = new Date(startInput.value);
+      }
+
+      // вираховуємо фінальну дату на основі стартової 
+      end = new Date(start.setDate(start.getDate() + 7));
+      end = formatDate(end);
+      endInput.value = end;
+      break;
+
+      // відповідно вираховуємо кінцеву дату через місяць  
+    case "month": 
+
+      if (!startInput.value) {
+        start = new Date();
+        startInput.value = formatDate(start);
+      } else {
+        start = new Date(startInput.value);
+      }
+
+      end = new Date(start.setMonth(start.getMonth() + 1));
+      end = formatDate(end);  
+      endInput.value = end;
+
+      break;
+
+    case 'other': 
+      endInput.value = '';
+      endInput.disabled = false;
+  } 
+
 }
 
 /**
@@ -231,3 +260,4 @@ function formatDate(date) {
 
   return formattedDate;
 }
+
